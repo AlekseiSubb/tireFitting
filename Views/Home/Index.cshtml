@@ -1,0 +1,36 @@
+﻿@model IEnumerable<tireFitting.Models.Order>
+@{
+    ViewData["Title"] = "Список всех записей";
+}
+<h3>Список записей</h3>
+@if (Model is null)
+{
+    <p>Список записей пуст. Выбирайте любое удобное для Вас время!</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Описание работ</th>
+                <th scope="col">Контактное лицо</th>
+            </tr>
+        </thead>
+
+        @foreach (var order in Model)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">@order.OrderId</th>
+                    <td>@order.DateCompletion</td>
+                    <td>@order.Comment</td>
+                    <td>@order.People.Name</td>
+                </tr>
+            </tbody>
+        }
+
+        </table>
+}
+
